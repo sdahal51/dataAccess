@@ -1,0 +1,101 @@
+{
+  "objects": {
+    "tenants": {
+      "properties": {
+        "id": {
+          "type": "string",
+          "identifier": true,
+          "sourceName": "_id",
+          "sourceType": "ObjectId",
+          "default": {
+            "function": "auto"
+          }
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the tenant."
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "sourceType": "Timestamp",
+          "default": {
+            "function": "now"
+          },
+          "description": "Timestamp when the tenant was created."
+        }
+      }
+    },
+    "users": {
+      "properties": {
+        "id": {
+          "type": "string",
+          "identifier": true,
+          "sourceName": "_id",
+          "sourceType": "ObjectId",
+          "default": {
+            "function": "auto"
+          },
+          "description": "Unique identifier for each user."
+        },
+        "username": {
+          "type": "string",
+          "unique": true,
+          "description": "Unique username of the user."
+        },
+        "tenant_id": {
+          "type": "string",
+          "sourceType": "ObjectId",
+          "description": "The ID of the tenant to which the user belongs."
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "sourceType": "Timestamp",
+          "default": {
+            "function": "now"
+          },
+          "description": "Timestamp when the user account was created."
+        }
+      }
+    },
+    "checkov_scans": {
+      "properties": {
+        "id": {
+          "type": "string",
+          "identifier": true,
+          "sourceName": "_id",
+          "sourceType": "ObjectId",
+          "default": {
+            "function": "auto"
+          },
+          "description": "Unique identifier for each scan."
+        },
+        "scan_date": {
+          "type": "string",
+          "format": "date-time",
+          "sourceType": "Timestamp",
+          "default": {
+            "function": "now"
+          },
+          "description": "Date of the scan."
+        },
+        "result": {
+          "type": "string",
+          "description": "Result of the scan."
+        },
+        "user_id": {
+          "type": "string",
+          "sourceType": "ObjectId",
+          "description": "The ID of the user who performed the scan."
+        },
+        "tenant_id": {
+          "type": "string",
+          "sourceType": "ObjectId",
+          "description": "The ID of the tenant to which the scan belongs."
+        }
+      }
+    }
+  },
+  "innerObjects": {}
+}
